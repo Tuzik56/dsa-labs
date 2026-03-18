@@ -1,6 +1,7 @@
-from decimal import Decimal
+from decimal import Decimal, getcontext
 from fractions import Fraction
 
+getcontext().prec = 28
 prices = [19.99, 5.49, 3.50, 12.30, 49.64, 31.01, 7.99]
 
 discount = 0.07

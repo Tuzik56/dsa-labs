@@ -25,3 +25,5 @@ try:
     print("Количество пробелов (рекурсия):", count_spaces_rec(text))
 except RecursionError:
     print("RecursionError")
+
+print("Количество пробелов (рекурсия):", count_spaces_rec(text[982:])) # len(text) = 1980
