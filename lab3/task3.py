@@ -10,7 +10,6 @@ def lcs(a, b):
             else:
                 table[i][j] = max(table[i-1][j], table[i][j-1])
 
-    # восстановление ответа
     i, j = n, m
     result = ""
 

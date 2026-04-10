@@ -2,12 +2,12 @@ daily_profit = [12, -5, 7, 9, -14, 3, 8, -2, 6, -11, 15, 4, -7, 10, 2, -9, 5, 13
 
 def max_subarray(arr):
     max_sum = arr[0]
-    current_sum = arr[0] #состояние динамического программирования
+    current_sum = arr[0] #состояние
 
     start, end, temp_start = 0, 0, 0
 
     for i in range(1, len(arr)):
-        if current_sum < 0: #переход в другое состояние
+        if current_sum < 0: #переход
             current_sum = arr[i]
             temp_start = i
         else:

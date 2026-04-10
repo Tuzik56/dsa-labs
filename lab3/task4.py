@@ -1,4 +1,3 @@
-# генерация grid (как в условии)
 grid = [
     [((i * 13 + j * 19 + 5) % 7) + 1 for j in range(128)]
     for i in range(128)
@@ -14,14 +13,9 @@ for i in range(70, 100):
 
 
 n, m = 128, 128
-
-# DP таблица
 dp = [[0] * m for _ in range(n)]
-
-# для восстановления пути
 parent = [[None] * m for _ in range(n)]
 
-# старт
 dp[0][0] = grid[0][0]
 
 # первая строка
@@ -34,7 +28,6 @@ for i in range(1, n):
     dp[i][0] = dp[i-1][0] + grid[i][0]
     parent[i][0] = (i-1, 0)
 
-# заполнение DP
 for i in range(1, n):
     for j in range(1, m):
         if dp[i-1][j] < dp[i][j-1]:
@@ -44,7 +37,6 @@ for i in range(1, n):
             dp[i][j] = dp[i][j-1] + grid[i][j]
             parent[i][j] = (i, j-1)
 
-# восстановление пути
 path = []
 i, j = n-1, m-1
 
@@ -58,9 +50,3 @@ path.reverse()
 print("Минимальная стоимость:", dp[n-1][m-1])
 print("Длина пути:", len(path))
 print(path)
-
-#Состояние DP: dp[i][j] — минимальная стоимость до клетки
-#Переход: из (i-1,j) или (i,j-1)
-#Ответ: dp[127][127]
-#Путь: восстанавливается через parent
-#Жадный подход: не работает из-за отсутствия глобального учёта
