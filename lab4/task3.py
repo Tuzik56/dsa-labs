@@ -16,32 +16,32 @@ def quick_sort(nums):
     return quick_sort(left) + middle + quick_sort(right)
 
 
-def generate_array(n):
-    arr = random.sample(range(0, 10000), n)
+def generate_sequence(n):
+    sequence = random.sample(range(0, 10000), n)
 
-    return arr
+    return sequence
 
 
-def measure_search_time(sort, search_func, arr, k, *args):
+def measure_search_time(sort, search_func, sequence, k, *args):
     start = time.time()
 
     if sort:
-        arr = quick_sort(arr)
+        sequence = quick_sort(sequence)
 
     for i in range(k):
-        search_func(arr, random.choice(arr), *args)
+        search_func(sequence, random.choice(sequence), *args)
     end = time.time()
 
     return end - start
 
 
-def test_searches(arr, requests):
+def test_searches(sequence, requests):
     linear_search_time = {}
     binary_search_time = {}
 
     for request in requests:
-        linear_search_time[request] = measure_search_time(False, linear_search, arr, request)
-        binary_search_time[request] = measure_search_time(True, binary_search, arr, request, 0, len(arr))
+        linear_search_time[request] = measure_search_time(False, linear_search, sequence, request)
+        binary_search_time[request] = measure_search_time(True, binary_search, sequence, request, 0, len(sequence))
 
     plt.plot(linear_search_time.keys(), linear_search_time.values())
     plt.plot(binary_search_time.keys(), binary_search_time.values())
@@ -50,4 +50,4 @@ def test_searches(arr, requests):
     plt.legend(["Linear total", "Sort + Binary total"])
     plt.show()
 
-test_searches(generate_array(10000), [10, 30, 50, 70, 100, 200])
+test_searches(generate_sequence(10000), [10, 30, 50, 70, 100, 200])
