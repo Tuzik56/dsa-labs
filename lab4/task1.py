@@ -12,7 +12,10 @@ def linear_search(sequence, element):
     return i
 
 
-def binary_search(sequence, required_element, start, end):
+def binary_search(sequence, required_element, start=0, end=None):
+    if end is None:
+        end = len(sequence) - 1
+
     while start <= end:
         median = (start + end) // 2
         element = sequence[median]
