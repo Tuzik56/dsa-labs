@@ -8,11 +8,11 @@ def linear_search(sequence, element):
 
     while True:
         comparison_count += 1
+        iteration_count += 1
 
         if sequence[i] == element:
             break
 
-        iteration_count += 1
         i += 1
         shift_count += 1
 

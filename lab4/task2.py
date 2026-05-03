@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 import random
 import time
-from lab4.task1 import exponential_search
+from lab4.task1 import interpolation_search
 
 def generate_arrays(n):
     arr_uniform = [i * 10 for i in range(n)]
     arr_quadratic = [i ** 2 for i in range(n)]
     arr_exponential = [int(1.2 ** i) for i in range(n)]
-    arr_random = random.sample(range(0, 10000), n)
+    arr_random = random.sample(range(0, 100000000), n)
     arr_random.sort()
 
     return {"Равномерное": arr_uniform,
@@ -28,7 +28,7 @@ def test_search_times(n):
     arrays = generate_arrays(n)
     results = {}
     for name, arr in arrays.items():
-        average_time = measure_search_time(exponential_search, arr)
+        average_time = measure_search_time(interpolation_search, arr)
         results[name] = average_time
     return results
 
