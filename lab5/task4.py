@@ -13,7 +13,7 @@ class Stats:
         self.max_depth = 0
 
 
-def choose_pivot(arr, l, r, mode):
+def choose_pivot(l, r, mode):
     if mode == "first":
         return l
     elif mode == "middle":
@@ -25,7 +25,7 @@ def choose_pivot(arr, l, r, mode):
 def partition_hoare(arr, l, r, stats, pivot_mode, log, depth):
     stats.partitions += 1
 
-    pivot_index = choose_pivot(arr, l, r, pivot_mode)
+    pivot_index = choose_pivot(l, r, pivot_mode)
     pivot = arr[pivot_index]
 
     i = l - 1
@@ -56,7 +56,7 @@ def partition_hoare(arr, l, r, stats, pivot_mode, log, depth):
 def partition_lomuto(arr, l, r, stats, pivot_mode, log, depth):
     stats.partitions += 1
 
-    pivot_index = choose_pivot(arr, l, r, pivot_mode)
+    pivot_index = choose_pivot(l, r, pivot_mode)
     arr[pivot_index], arr[r] = arr[r], arr[pivot_index]
     stats.swaps += 1
 

@@ -9,11 +9,8 @@ records3 = [("C1", 3), ("C2", 1), ("C3", 3), ("C4", 2), ("C5", 3),
             ("C6", 1), ("C7", 2), ("C8", 3), ("C9", 1), ("C10", 2),
             ("C11", 3), ("C12", 1)]
 
-# ---------------- СОРТИРОВКИ ----------------
 
-# УСТОЙЧИВЫЕ
-
-def bubble_sort(arr):
+def bubble_sort(arr): #устойчивые
     a = arr[:]
     n = len(a)
     for i in range(n):
@@ -35,9 +32,7 @@ def insertion_sort(arr):
     return a
 
 
-# НЕУСТОЙЧИВЫЕ
-
-def selection_sort(arr):
+def selection_sort(arr): # неустойчивые
     a = arr[:]
     n = len(a)
     for i in range(n):
@@ -70,8 +65,6 @@ def quick_sort(arr):
     return a
 
 
-# ---------------- ПРОВЕРКА УСТОЙЧИВОСТИ ----------------
-
 def is_stable(original, sorted_arr):
     from collections import defaultdict
 
@@ -86,8 +79,6 @@ def is_stable(original, sorted_arr):
 
     return original_order == sorted_order
 
-
-# ---------------- ЗАПУСК ----------------
 
 algorithms = [
     ("Bubble (устойчивый)", bubble_sort),
@@ -115,9 +106,7 @@ run(records2, "RECORDS 2")
 run(records3, "RECORDS 3")
 
 
-# ---------------- МНОГОКРИТЕРИАЛЬНАЯ СОРТИРОВКА ----------------
-
-def multi_sort(records):
+def multi_sort(records): #многокритериальная сортировка
     print("\n===== МНОГОКРИТЕРИАЛЬНАЯ СОРТИРОВКА =====")
 
     # 1. Сортируем по ID

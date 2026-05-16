@@ -58,7 +58,6 @@ def merge_sort_recursive(sequence, support=None, start_index=None, stop_index=No
     merge(sequence, support, start_index, mid, mid + 1, stop_index)
 
 
-# Итерационный вариант сортировки слиянием
 def merge_sort_iterative(sequence):
     global comparison_count
     n = len(sequence)
@@ -80,7 +79,7 @@ def merge_sort_iterative(sequence):
     return passes
 
 
-print("Исходный массив (рекурсивный):")
+print("Исходный массив:")
 print(cargo_priority)
 
 sorted_recursive = cargo_priority[:]
