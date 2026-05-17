@@ -1,17 +1,14 @@
-# Узел списка
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-# Стек на основе односвязного списка
 class Stack:
     def __init__(self):
         self.head = None
         self.count = 0
 
-    # push — добавление в стек
     def push(self, value):
         new_node = Node(value)
 
@@ -20,11 +17,9 @@ class Stack:
 
         self.count += 1
 
-    # pop — удаление верхнего элемента
     def pop(self):
         if self.head is None:
-            print("Стек пуст")
-            return None
+            raise IndexError("Стек пуст")
 
         value = self.head.data
         self.head = self.head.next
@@ -33,23 +28,17 @@ class Stack:
 
         return value
 
-    # peek — просмотр верхнего элемента
     def peek(self):
         if self.head is None:
-            print("Стек пуст")
-            return None
+            raise IndexError("Стек пуст")
 
         return self.head.data
 
-    # size — количество элементов
     def size(self):
         return self.count
 
-    # вывод стека
     def print_stack(self):
         current = self.head
-
-        print("Содержимое стека:", end=" ")
 
         while current is not None:
             print(current.data, end=" ")

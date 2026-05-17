@@ -1,75 +1,68 @@
-# Узел списка
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-# Односвязный список
 class SinglyLinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None  # Добавили указатель на последний узел
         self.size = 0
 
-    # добавление в начало
     def add_first(self, value):
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
+
+        if self.tail is None:
+            self.tail = new_node
+
         self.size += 1
 
-    # добавление в конец
     def add_last(self, value):
         new_node = Node(value)
 
-        # если список пуст
         if self.head is None:
             self.head = new_node
+            self.tail = new_node
         else:
-            current = self.head
-
-            # идем до последнего узла
-            while current.next is not None:
-                current = current.next
-
-            current.next = new_node
+            self.tail.next = new_node
+            self.tail = new_node
 
         self.size += 1
 
-    # удаление первого элемента
     def remove_first(self):
         if self.head is None:
-            print("Список пуст")
-            return
+            raise IndexError("Попытка удаления из пустого списка")
 
         self.head = self.head.next
         self.size -= 1
 
-    # удаление последнего элемента
+        if self.head is None:
+            self.tail = None
+
     def remove_last(self):
         if self.head is None:
-            print("Список пуст")
-            return
+            raise IndexError("Попытка удаления из пустого списка")
 
-        # если в списке один элемент
         if self.head.next is None:
             self.head = None
+            self.tail = None
         else:
             current = self.head
 
-            # идем до предпоследнего узла
             while current.next.next is not None:
                 current = current.next
 
             current.next = None
+            self.tail = current
 
         self.size -= 1
 
-    # получение элемента по индексу
     def get(self, index):
         if index < 0 or index >= self.size:
-            print("Ошибка: неверный индекс")
-            return None
+            raise IndexError("Индекс вне диапазона")
 
         current = self.head
 
@@ -78,11 +71,9 @@ class SinglyLinkedList:
 
         return current.data
 
-    # получение размера списка
     def get_size(self):
         return self.size
 
-    # вывод списка
     def print_list(self):
         current = self.head
 
@@ -102,7 +93,6 @@ lst.add_last(20)
 lst.add_last(7)
 
 lst.remove_first()
-
 lst.remove_last()
 
 lst.print_list()

@@ -4,7 +4,6 @@ class DynamicArray:
         self.size = 0
         self.data = [0] * self.capacity
 
-    # увеличение массива в 2 раза
     def resize(self):
         self.capacity *= 2
         new_data = [0] * self.capacity
@@ -14,7 +13,6 @@ class DynamicArray:
 
         self.data = new_data
 
-    # добавление в конец
     def append(self, value):
         if self.size >= self.capacity:
             self.resize()
@@ -22,47 +20,37 @@ class DynamicArray:
         self.data[self.size] = value
         self.size += 1
 
-    # вставка по индексу
     def insert(self, index, value):
         if index < 0 or index > self.size:
-            print("Ошибка: неверный индекс")
-            return
+            raise IndexError("Индекс вне диапазона")
 
         if self.size >= self.capacity:
             self.resize()
 
-        # сдвиг элементов вправо
         for i in range(self.size, index, -1):
             self.data[i] = self.data[i - 1]
 
         self.data[index] = value
         self.size += 1
 
-    # удаление по индексу
     def delete(self, index):
         if index < 0 or index >= self.size:
-            print("Ошибка: неверный индекс")
-            return
+            raise IndexError("Индекс вне диапазона")
 
-        # сдвиг элементов влево
         for i in range(index, self.size - 1):
             self.data[i] = self.data[i + 1]
 
         self.size -= 1
 
-    # получение элемента
     def get(self, index):
         if index < 0 or index >= self.size:
-            print("Ошибка: неверный индекс")
-            return None
+            raise IndexError("Индекс вне диапазона")
 
         return self.data[index]
 
-    # получение размера
     def get_size(self):
         return self.size
 
-    # вывод массива
     def print_array(self):
         print(self.data[:self.size])
 
